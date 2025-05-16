@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
 
-function Counter() {
-    const [count,setCount]=useState(0)
+import React from 'react'
+import { COUNTER_ACTIONS, useCount } from "../../app/CounterProvider";
+
+export function CounterComponet() {
+const {state,dispatch}=useCount()
   return (
-    <div className='counter_container'>
-        <h1>Count: {count}</h1>
-        <div className='btn_container'>
-            <button className='btn' onClick={()=>setCount((prev)=>prev+5)}>+5</button>
-            <button className='btn' onClick={()=>setCount((prev)=>prev+10)}>+10</button>
-            <button className='btn' onClick={()=>setCount((prev)=>prev-10)}>-10</button>
-            <button className='btn' onClick={()=>setCount((prev)=>prev-5)}>-5</button>
-        </div>
+    <div className='flex w-dvw mt-16 flex-col justify-center items-center gap-5'>
+    <div className='font-medium text-xl'>Count: {state}</div>
+    <div className='flex gap-5 text-2xl'>
+      <button className='text-lg px-5 py-1 rounded-md text-white shadow-md bg-red-500 cursor-pointer' onClick={()=>dispatch({type:COUNTER_ACTIONS.DECREMENT})}>
+        -
+      </button>
+      <button className='text-lg px-5 py-1 rounded-md text-white shadow-md bg-green-500 cursor-pointer' onClick={()=>dispatch({type:COUNTER_ACTIONS.INCREMENT})}>
+        +
+      </button>
+    </div>
     </div>
   )
 }
 
-export default Counter
