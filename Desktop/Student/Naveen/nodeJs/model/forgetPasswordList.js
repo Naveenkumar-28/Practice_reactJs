@@ -1,25 +1,25 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose');
 
 
 const forgetPasswordSchema = new mongoose.Schema({
     userId: {
-        type:mongoose.Types.ObjectId,
-        required:true
+        type: mongoose.Types.ObjectId,
+        required: true
     },
     changedpassword: {
         type: String,
-        required:true
+        required: true
     },
-    changeCount:{
+    changeCount: {
         type: Number,
-        default:0
+        default: 0
     },
-    createdAt:{
+    createdAt: {
         type: Date,
-        default:Date.now()
+        default: Date.now()
     }
 })
 
 const ForgetPasswordList = mongoose.model('forgetPasswordList', forgetPasswordSchema)
 
-module.exports=ForgetPasswordList
+module.exports = { ForgetPasswordList }
